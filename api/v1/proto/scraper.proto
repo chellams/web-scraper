@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package crawler;
+
+option go_package = "github.com/chellams/web-scraper/api/v1/proto";
+option java_multiple_files = true;
+option java_package = "crawler";
+
+message CrawlerRequest {
+  string url = 1;
+}
+
+message CrawlerResponse {
+  repeated string urls = 1;
+}
+
+service CrawlerService {
+  rpc GetURLs(CrawlerRequest) returns (CrawlerResponse) {}
+}

@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "service",
+    srcs = ["scraper.go"],
+    importpath = "github.com/chellams/web-scraper/internal/service",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//api/v1/proto",
+        "//internal/scrape",
+    ],
+)

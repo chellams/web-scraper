@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "cmd_lib",
+    srcs = [
+        "main.go",
+        "serve.go",
+        "serve_grpc.go",
+        "serve_rest.go",
+    ],
+    importpath = "github.com/chellams/web-scraper/cmd",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//api/v1/proto",
+        "//internal/scrape",
+        "//internal/service",
+        "@com_github_rs_zerolog//:zerolog",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//reflection",
+    ],
+)
+
+go_binary(
+    name = "cmd",
+    embed = [":cmd_lib"],
+    visibility = ["//visibility:public"],
+)
