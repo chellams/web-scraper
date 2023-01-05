@@ -1,0 +1,13 @@
+# IntelliJ
+.idea
+.ijwb
+
+# Bazel build artifacts
+/bazel-*
+
+# Generated Go protobuf artifacts, we don't want to commit anything
+# that is generated to prevent divergence and manual edits.
+*.pb.go
+
+# OS X file metadata
+.DS_Store
