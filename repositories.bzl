@@ -834,6 +834,7 @@ def go_repositories():
     )
     go_repository(
         name = "org_golang_google_grpc",
+# external/org_golang_google_grpc/reflection/serverreflection.go:78:36: cannot use s (type GRPCServer) as type *grpc.Server in argument to grpc_reflection_v1alpha.RegisterServerReflectionServer: need type assertion
         build_file_proto_mode = "disable",
         importpath = "google.golang.org/grpc",
         sum = "h1:E1eGv1FTqoLIdnBCZufiSHgKjlqG6fKFf6pPWtMTh8U=",
