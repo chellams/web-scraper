@@ -6,14 +6,14 @@ option go_package = "github.com/chellams/web-scraper/api/v1/proto";
 option java_multiple_files = true;
 option java_package = "crawler";
 
-message CrawlerRequest {
+message ScraperRequest {
   string url = 1;
 }
 
-message CrawlerResponse {
+message ScraperResponse {
   repeated string urls = 1;
 }
 
 service CrawlerService {
-  rpc GetURLs(CrawlerRequest) returns (CrawlerResponse) {}
+  rpc GetURLs(ScraperRequest) returns (ScraperResponse) {}
 }

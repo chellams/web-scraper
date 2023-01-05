@@ -18,7 +18,7 @@ func NewScraper(scraper *crawl.Scraper) proto.CrawlerServiceServer {
 	}
 }
 
-func (s *ScraperService) GetURLs(_ context.Context, request *proto.CrawlerRequest) (*proto.CrawlerResponse, error) {
+func (s *ScraperService) GetURLs(_ context.Context, request *proto.ScraperRequest) (*proto.ScraperResponse, error) {
 
 	baseUrl := request.GetUrl()
 	urls, err := s.scraper.ScrapeUrl(baseUrl)
@@ -27,7 +27,7 @@ func (s *ScraperService) GetURLs(_ context.Context, request *proto.CrawlerReques
 		fmt.Println(err)
 	}
 
-	return &proto.CrawlerResponse{
+	return &proto.ScraperResponse{
 		Urls: urls,
 	}, nil
 }
