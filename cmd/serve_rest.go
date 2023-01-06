@@ -20,17 +20,17 @@ func NewRestServer(scraper *crawl.Scraper, address string) WebServer {
 	}
 }
 
-func (r RestServer) Serve(address string) {
+func (r RestServer) Serve() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", r.GetUrls)
 
-	err := http.ListenAndServe(address, mux)
+	err := http.ListenAndServe(r.address, mux)
 	if err != nil {
 		log.Err(err).Msg(" error in starting REST server")
 	}
 
-	log.Info().Msgf(" Listening on %s", address)
+	log.Info().Msgf(" Listening on %s", r.address)
 }
 
 func (r RestServer) GetUrls(writer http.ResponseWriter, request *http.Request) {

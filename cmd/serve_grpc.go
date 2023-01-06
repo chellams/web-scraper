@@ -22,8 +22,8 @@ func NewGServer(scraper proto.CrawlerServiceServer, address string) WebServer {
 	}
 }
 
-func (g GRPCServer) Serve(address string) {
-	lis, err := net.Listen("tcp", address)
+func (g GRPCServer) Serve() {
+	lis, err := net.Listen("tcp", g.address)
 
 	if err != nil {
 		log.Error().Err(err).Msg("error in listening gRPC server")
@@ -40,5 +40,5 @@ func (g GRPCServer) Serve(address string) {
 		return
 	}
 
-	log.Info().Msgf("listening on %s", address)
+	log.Info().Msgf("listening on %s", g.address)
 }

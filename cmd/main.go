@@ -16,11 +16,11 @@ func main() {
 	server := service.NewScraper(scraper)
 
 	if isGRPCEnabled {
-		grpcServer := NewGServer(server)
-		grpcServer.Serve("localhost:9876")
+		grpcServer := NewGServer(server, "localhost:9876")
+		grpcServer.Serve()
 	} else {
-		restServer := NewRestServer(scraper)
-		restServer.Serve("localhost:9876")
+		restServer := NewRestServer(scraper, "localhost:9876")
+		restServer.Serve()
 	}
 }
 
