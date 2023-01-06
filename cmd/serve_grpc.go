@@ -1,38 +1,44 @@
 package main
 
 import (
-	"github.com/chellams/web-scraper/api/v1/proto"
-	crawl "github.com/chellams/web-scraper/internal/scrape"
-	"github.com/chellams/web-scraper/internal/service"
-	"log"
 	"net"
 
+	"github.com/rs/zerolog/log"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+
+	"github.com/chellams/web-scraper/api/v1/proto"
 )
 
-type GServer struct {
+type GRPCServer struct {
+	scraperService proto.CrawlerServiceServer
+	address        string
 }
 
-func NewGServer() WebServer {
-	return GServer{}
+func NewGServer(scraper proto.CrawlerServiceServer, address string) WebServer {
+	return GRPCServer{
+		scraperService: scraper,
+		address:        address,
+	}
 }
 
-func (g GServer) Serve(address string) {
+func (g GRPCServer) Serve(address string) {
 	lis, err := net.Listen("tcp", address)
 
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		log.Error().Err(err).Msg("error in listening gRPC server")
+		return
 	}
 
-	server := service.NewScraper(crawl.NewScraper())
-
 	gServer := grpc.NewServer()
-	proto.RegisterCrawlerServiceServer(gServer, server)
+	proto.RegisterCrawlerServiceServer(gServer, g.scraperService)
 
 	reflection.Register(gServer)
 
 	if err := gServer.Serve(lis); err != nil {
-		log.Fatalf("failed to serve: %s", err)
+		log.Error().Err(err).Msg("error in starting gRPC server")
+		return
 	}
+
+	log.Info().Msgf("listening on %s", address)
 }
