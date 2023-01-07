@@ -12,8 +12,10 @@ go_library(
     visibility = ["//visibility:private"],
     deps = [
         "//api/v1/proto",
+        "//internal/config",
         "//internal/scrape",
         "//internal/service",
+        "@com_github_gosidekick_goconfig//:goconfig",
         "@com_github_rs_zerolog//:zerolog",
         "@com_github_rs_zerolog//log",
         "@org_golang_google_grpc//:go_default_library",

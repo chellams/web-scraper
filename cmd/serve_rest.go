@@ -25,12 +25,12 @@ func (r RestServer) Serve() {
 
 	mux.HandleFunc("/", r.GetUrls)
 
+	log.Info().Msgf(" started to listening on %s", r.address)
+
 	err := http.ListenAndServe(r.address, mux)
 	if err != nil {
 		log.Err(err).Msg(" error in starting REST server")
 	}
-
-	log.Info().Msgf(" Listening on %s", r.address)
 }
 
 func (r RestServer) GetUrls(writer http.ResponseWriter, request *http.Request) {

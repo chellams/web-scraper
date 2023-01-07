@@ -34,11 +34,13 @@ func (g GRPCServer) Serve() {
 	proto.RegisterCrawlerServiceServer(gServer, g.scraperService)
 
 	reflection.Register(gServer)
+	
+	add := lis.Addr().(*net.TCPAddr)
+	log.Info().Msgf(" listening on %s:%d", add.IP.String(), add.Port)
 
 	if err := gServer.Serve(lis); err != nil {
 		log.Error().Err(err).Msg("error in starting gRPC server")
 		return
 	}
 
-	log.Info().Msgf("listening on %s", g.address)
 }

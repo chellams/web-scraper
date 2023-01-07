@@ -47,6 +47,21 @@ def go_repositories():
         version = "v0.1.0",
     )
     go_repository(
+        name = "com_github_fatih_structs",
+        build_file_proto_mode = "disable_global",
+        importpath = "github.com/fatih/structs",
+        sum = "h1:Q7juDM0QtcnhCpeyLGQKyg4TOIghuNXrkL32pHAUMxo=",
+        version = "v1.1.0",
+    )
+    go_repository(
+        name = "com_github_fsnotify_fsnotify",
+        build_file_proto_mode = "disable_global",
+        importpath = "github.com/fsnotify/fsnotify",
+        sum = "h1:n+5WquG0fcWoWp6xPWfHdbskMCQaFnG6PfBrh1Ky4HY=",
+        version = "v1.6.0",
+    )
+
+    go_repository(
         name = "com_github_godbus_dbus_v5",
         importpath = "github.com/godbus/dbus/v5",
         sum = "h1:9349emZab16e7zQvpmsbtjc18ykshndd8y2PG3sgJbA=",
@@ -77,6 +92,21 @@ def go_repositories():
         version = "v1.1.2",
     )
     go_repository(
+        name = "com_github_gosidekick_goconfig",
+        build_file_proto_mode = "disable_global",
+        importpath = "github.com/gosidekick/goconfig",
+        sum = "h1:iiv23+3uJlf4PPC2EY8qrPre4ISlV/M/DnR8oz5cQy8=",
+        version = "v1.3.1",
+    )
+    go_repository(
+        name = "com_github_hashicorp_hcl",
+        build_file_proto_mode = "disable_global",
+        importpath = "github.com/hashicorp/hcl",
+        sum = "h1:0Anlzjpi4vEasTeNFn2mLJgTSwt0+6sfsiTG8qcWGx4=",
+        version = "v1.0.0",
+    )
+
+    go_repository(
         name = "com_github_mattn_go_colorable",
         importpath = "github.com/mattn/go-colorable",
         sum = "h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=",
@@ -88,6 +118,21 @@ def go_repositories():
         sum = "h1:BTarxUcIeDqL27Mc+vyvdWYSL28zpIhv3RoTdsLMPng=",
         version = "v0.0.17",
     )
+    go_repository(
+        name = "com_github_nuveo_log",
+        build_file_proto_mode = "disable_global",
+        importpath = "github.com/nuveo/log",
+        sum = "h1:IoVlN33HZ55i+l/dTrlcQSv3cbK4YR1JOBMUhEsG75k=",
+        version = "v0.0.0-20190430190217-44d02db6bdf8",
+    )
+    go_repository(
+        name = "com_github_pelletier_go_toml",
+        build_file_proto_mode = "disable_global",
+        importpath = "github.com/pelletier/go-toml",
+        sum = "h1:tjENF6MfZAg8e4ZmZTeWaWiT2vXtsoO6+iuOjFhECwM=",
+        version = "v1.9.4",
+    )
+
     go_repository(
         name = "com_github_pkg_errors",
         importpath = "github.com/pkg/errors",
@@ -106,6 +151,14 @@ def go_repositories():
         sum = "h1:1T7qCieN22GVc8S4Q2yuexzBb1EqjbgjSH9RohbMjKs=",
         version = "v1.27.0",
     )
+    go_repository(
+        name = "com_github_stretchr_testify",
+        build_file_proto_mode = "disable_global",
+        importpath = "github.com/stretchr/testify",
+        sum = "h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=",
+        version = "v1.7.0",
+    )
+
     go_repository(
         name = "com_google_cloud_go",
         importpath = "cloud.google.com/go",
@@ -821,6 +874,21 @@ def go_repositories():
         version = "v1.9.0",
     )
     go_repository(
+        name = "in_gopkg_ini_v1",
+        build_file_proto_mode = "disable_global",
+        importpath = "gopkg.in/ini.v1",
+        sum = "h1:tGK/CyBg7SMzb60vP1M03vNZ3VDu3wGQJwn7Sxi9r3c=",
+        version = "v1.63.2",
+    )
+    go_repository(
+        name = "in_gopkg_yaml_v2",
+        build_file_proto_mode = "disable_global",
+        importpath = "gopkg.in/yaml.v2",
+        sum = "h1:D8xgwECY7CYvx+Y2n4sBz93Jn9JRvxdiyyo8CTfuKaY=",
+        version = "v2.4.0",
+    )
+
+    go_repository(
         name = "org_golang_google_appengine",
         importpath = "google.golang.org/appengine",
         sum = "h1:/wp5JvzpHIxhs/dumFmF7BXTf3Z+dd4uXta4kVyO508=",
@@ -834,7 +902,7 @@ def go_repositories():
     )
     go_repository(
         name = "org_golang_google_grpc",
-# external/org_golang_google_grpc/reflection/serverreflection.go:78:36: cannot use s (type GRPCServer) as type *grpc.Server in argument to grpc_reflection_v1alpha.RegisterServerReflectionServer: need type assertion
+        # external/org_golang_google_grpc/reflection/serverreflection.go:78:36: cannot use s (type GRPCServer) as type *grpc.Server in argument to grpc_reflection_v1alpha.RegisterServerReflectionServer: need type assertion
         build_file_proto_mode = "disable",
         importpath = "google.golang.org/grpc",
         sum = "h1:E1eGv1FTqoLIdnBCZufiSHgKjlqG6fKFf6pPWtMTh8U=",
