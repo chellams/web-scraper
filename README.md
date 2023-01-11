@@ -19,6 +19,10 @@ To run the application, `bazel run //cmd`
 To run the application with configuration variables,
 `ENABLE_GRPC=true bazel run //cmd`
 
+## Test
+1. To test gRPC server , we can use [grpcui](https://github.com/fullstorydev/grpcui) application
+2. To test REST server, we can use any browser or curl command.
+
 ### Note
 1. If you face any issue while doing `go mod tidy`, run the following command
    `protoc \
