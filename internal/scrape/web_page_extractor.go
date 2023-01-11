@@ -1,6 +1,7 @@
 package crawl
 
 import (
+	"math/rand"
 	"net/http"
 	"time"
 
@@ -30,7 +31,9 @@ func (w *WebPageExtractor) ExtractWebPage(webPageUrl string, webPageResponse cha
 		log.Err(err).Msg("error in creating request")
 		errorChannel <- err
 	}
-	request.Header.Set("User-Agent", userAgents[0])
+	rand.Seed(time.Now().UnixNano())
+	idx := rand.Intn(len(userAgents))
+	request.Header.Set("User-Agent", userAgents[idx])
 	response, err := client.Do(request)
 	if err != nil {
 		log.Err(err).Msg("error in getting response from ")
