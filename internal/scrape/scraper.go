@@ -4,6 +4,7 @@ import (
 	"github.com/rs/zerolog/log"
 	"net/http"
 	"sync"
+	"time"
 )
 
 type Scraper struct {
@@ -31,6 +32,7 @@ func (s *Scraper) ScrapeUrl(baseUrl string) ([]string, error) {
 	wg.Add(1)
 	go func() {
 		urlChannel <- baseUrl
+		time.Sleep(500)
 		wg.Done()
 	}()
 
